@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/todolist.js"></script>
+</head>
+
+<body>
+    <!-- header部分开始 -->
+    <div class="header">
+        <div class="wrapper w">
+            <label for="title">ToDoList</label>
+            <input type="text" name="title" id="title" placeholder="添加ToDoList">
+        </div>
+    </div>
+    <!-- header部分结束 -->
+
+    <!-- section部分开始 -->
+    <section>
+        <div class="inner-section">
+            <!-- 正在进行部分 -->
+
+            <div class="inProgress clearfix">
+                <h2>正在进行<span class="toDoList" id="toDoListNum">0</span></h2>
+            </div>
+
+            <div class="onGoing">
+                <div class="list-item" id="list-item">
+                    <li class="rect"></li>
+                    <input type="checkbox" name="" id="">
+                    <li class="content">学习js</li>
+                    <img src="./images/circle.png" alt="">
+                </div>
+            </div>
+
+            <!-- 已经完成部分 -->
+            <div class="completed clearfix">
+                <h2>已经完成<span class="doneList" id="doneListNum">0</span></h2>
+            </div>
+
+            <div class="list-item done-list-item" id="done-list-item">
+                <li class="rect"></li>
+                <input type="checkbox" name="" id="" checked>
+                <li class="content">学习js</li>
+                <img src="./images/circle.png" alt="">
+            </div>
+        </div>
+    </section>
+    <!-- section部分结束 -->
+
+    <!-- footer部分开始 -->
+    <footer class="w">
+        Copyright © 2014 todolist.cn
+    </footer>
+    <!-- footer部分结束 -->
+</body>
+
+</html>
