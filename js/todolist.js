@@ -7,6 +7,7 @@ $(document).ready(function () {
     let circle = $('.onGoing img');
 
     let clickCount = 0;
+    let i = 0;
 
     inputContent.keypress(function (e) {
         // console.log(e.keyCode);
@@ -15,29 +16,46 @@ $(document).ready(function () {
                 alert('请输入您的待办事项~');
                 return;
             }
-            if (clickCount == 0) {
-                // console.log(inputContent.val());
-                listItem.css('display', 'block');
-                listItemContent.html(inputContent.val());
-                inputContent.val('');
-                clickCount += 1;
-                toDoListNum.html(clickCount);
-            } else {
-                // 获取克隆对象
-                let cloneListItem = listItem.clone(true);
-                // 修改克隆对象中第三个子元素的内容
-                cloneListItem.children().eq(2).html(inputContent.val());
-                // 把修改后的克隆对象追加到onGoing前面用prepend
-                onGoing.prepend(cloneListItem);
-                inputContent.val('');
-                clickCount += 1;
-                toDoListNum.html(clickCount);
-            }
+
+            let $div = $('<div class="list-item" id="list-item"></div>');
+            $div.attr('id', 'listItem' + i);
+            i = i + 1;
+
+            $div.append('<li class="rect"></li>');
+            $div.append('<input type="checkbox" name="" id="">');
+
+            let content = $('<li class="content"></li>');
+            content.html(inputContent.val());
+            $div.append(content);
+            $div.append('<img src="./images/circle.png" alt="">');
+
+            $('.onGoing').append($div);
+            inputContent.val('');
+            clickCount += 1;
+            toDoListNum.html(clickCount);
+
+            // if (clickCount == 0) {
+            //     // console.log(inputContent.val());
+            //     listItem.css('display', 'block');
+            //     listItemContent.html(inputContent.val());
+            //     inputContent.val('');
+            //     clickCount += 1;
+            //     toDoListNum.html(clickCount);
+            // } else {
+            //     // 获取克隆对象
+            //     cloneListItem = listItem.clone(true);
+            //     // 修改克隆对象中第三个子元素的内容
+            //     cloneListItem.children().eq(2).html(inputContent.val());
+            //     // 把修改后的克隆对象追加到onGoing前面用prepend
+            //     onGoing.prepend(cloneListItem);
+            //     inputContent.val('');
+            //     clickCount += 1;
+            //     toDoListNum.html(clickCount);
+            // }
         }
     })
 
     circle.on('click', function (e) {
-        // $(e.target).attr('src', '');
         // console.log($(e.target).parent());
         $(e.target).parent().remove();
         clickCount -= 1;
