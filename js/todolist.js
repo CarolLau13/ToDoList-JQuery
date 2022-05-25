@@ -4,7 +4,6 @@ $(document).ready(function () {
     let listItem = $('#list-item');
     let listItemContent = $('#list-item .content');
     let toDoListNum = $('#toDoListNum');
-    let circle = $('.onGoing img');
 
     let clickCount = 0;
     let i = 0;
@@ -27,12 +26,22 @@ $(document).ready(function () {
             let content = $('<li class="content"></li>');
             content.html(inputContent.val());
             $div.append(content);
-            $div.append('<img src="./images/circle.png" alt="">');
 
-            $('.onGoing').append($div);
+            let $image = $('<img src="./images/circle.png" alt="">');
+            // $image.attr('class', 'image' + i);
+            $div.append($image);
+
+            $('.onGoing').prepend($div);
             inputContent.val('');
             clickCount += 1;
             toDoListNum.html(clickCount);
+
+            $image.on('click', function (e) {
+                // console.log($(e.target));
+                $(e.target).parent().remove();
+                clickCount -= 1;
+                toDoListNum.html(clickCount);
+            })
 
             // if (clickCount == 0) {
             //     // console.log(inputContent.val());
@@ -54,19 +63,4 @@ $(document).ready(function () {
             // }
         }
     })
-
-    circle.on('click', function (e) {
-        // console.log($(e.target).parent());
-        $(e.target).parent().remove();
-        clickCount -= 1;
-        toDoListNum.html(clickCount);
-    })
 })
-
-// 1.隐藏.list-item
-// 2.第一次按回车键后把.list-item的display改为block
-// 3.把.list-item .content改为输入框输入的内容 inputContent.val()
-// 4.第二次按回车键后复制一个.list-item，再修改克隆元素中子元素content里面的内容
-// 5.把修改后的克隆对象追加到onGoing前面
-// 6.每次输入input后清空input里面的value
-// 7.
